@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MemoryBookService {
+public class MemoryBookService implements BookService {
+    private static Long currentId = 4L;
     private List<Book> list;
 
     public MemoryBookService() {
@@ -32,8 +33,10 @@ public class MemoryBookService {
         this.list = list;
     }
 
-    public void addBook (Book book) {
+    public Book addBook (Book book) {
+        book.setId(currentId++);
         list.add(book);
+        return book;
     }
 
     public void removeBook (Long id) {
