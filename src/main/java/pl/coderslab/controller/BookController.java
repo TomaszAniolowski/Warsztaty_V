@@ -31,7 +31,7 @@ public class BookController {
         return books;
     }
 
-    @RequestMapping
+    @PostMapping
     public Book addBook(@RequestBody Book book) {
         return memoryBookService.addBook(book);
     }

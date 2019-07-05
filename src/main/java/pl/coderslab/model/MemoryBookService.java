@@ -3,21 +3,23 @@ package pl.coderslab.model;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Service
 public class MemoryBookService implements BookService {
-    private static Long currentId = 4L;
+    private static Long currentId = 1L;
     private List<Book> list;
 
     public MemoryBookService() {
         list = new ArrayList<>();
-        list.add(new Book(1L, "9788324631766", "Thinking in Java", "Bruce Eckel",
+        list.add(new Book(currentId++, "9788324631766", "Thinking in Java", "Bruce Eckel",
                 "Helion", "programming"));
-        list.add(new Book(2L, "9788324627738", "Rusz glowa, Java.",
+        list.add(new Book(currentId++, "9788324627738", "Rusz glowa, Java.",
                 "Sierra Kathy, Bates Bert", "Helion", "programming"));
-        list.add(new Book(3L, "9780130819338", "Java 2. Podstawy",
+        list.add(new Book(currentId++, "9780130819338", "Java 2. Podstawy",
                 "Cay Horstmann, Gary Cornell", "Helion", "programming"));
     }
 
@@ -26,7 +28,7 @@ public class MemoryBookService implements BookService {
     }
 
     public Book getBook(Long id) {
-        return list.stream().filter(b -> b.getId() == id).findFirst().get();
+        return list.stream().filter(b -> b.getId().equals(id)).findFirst().get();
     }
 
     public void setList(List<Book> list) {
@@ -41,14 +43,17 @@ public class MemoryBookService implements BookService {
 
     public void removeBook (Long id) {
         list = list.stream()
-                .filter(b -> b.getId() != id)
+                .filter(b -> b.getId().equals(id))
                 .collect(Collectors.toList());
     }
 
     public void updateBook (Book book) {
-        list = list.stream()
-                .filter(b -> b.getId() == book.getId())
-                .map(b -> b = book)
-                .collect(Collectors.toList());
+        ListIterator<Book> bookIterator = list.listIterator();
+        while (bookIterator.hasNext()){
+            Book tempBook = bookIterator.next();
+            if (tempBook.getId().equals(book.getId())){
+                bookIterator.set(book);
+            }
+        }
     }
 }
