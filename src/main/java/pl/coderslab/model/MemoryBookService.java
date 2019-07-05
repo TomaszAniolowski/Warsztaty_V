@@ -36,9 +36,9 @@ public class MemoryBookService {
         list.add(book);
     }
 
-    public void removeBook (Book book) {
+    public void removeBook (Long id) {
         list = list.stream()
-                .filter(b -> b.getId() != book.getId())
+                .filter(b -> b.getId() != id)
                 .collect(Collectors.toList());
     }
 

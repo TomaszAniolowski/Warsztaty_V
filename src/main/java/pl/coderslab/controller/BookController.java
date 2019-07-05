@@ -1,20 +1,48 @@
 package pl.coderslab.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
+import pl.coderslab.model.MemoryBookService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    @RequestMapping("/hello")
-    public String hello(){
-        return "{hello: World}";
+
+    private MemoryBookService memoryBookService;
+
+    @Autowired
+    public BookController(MemoryBookService memoryBookService){
+        this.memoryBookService = memoryBookService;
     }
 
-    @RequestMapping("/helloBook")
-    public Book helloBook(){
-        return new Book(1L,"9788324631766","Thinking in Java",
-                "Bruce Eckel","Helion","programming");
+    @GetMapping("/{id}")
+    public Book getBook(@PathVariable Long id){
+        return memoryBookService.getBook(id);
     }
+
+    @GetMapping
+    public List<Book> getBooks(){
+        List<Book> books = memoryBookService.getList();
+
+        return books;
+    }
+
+    @PostMapping
+    public void addBook(@RequestBody Book book) {
+        memoryBookService.addBook(book);
+    }
+
+    @PutMapping("/{id}")
+    public void updateBook(@RequestBody Book book){
+        memoryBookService.updateBook(book);
+    }
+
+    @DeleteMapping("/{id}")
+    public void removeBook(Long id) {
+        memoryBookService.removeBook(id);
+    }
+
 }
