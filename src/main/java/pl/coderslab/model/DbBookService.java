@@ -1,11 +1,13 @@
 package pl.coderslab.model;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Qualifier("dbBookService")
 public class DbBookService implements BookService {
 
     private BookDao bookDao = new BookDao();

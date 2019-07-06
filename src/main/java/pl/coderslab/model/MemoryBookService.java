@@ -1,5 +1,6 @@
 package pl.coderslab.model;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Service
+@Qualifier("memoryBookService")
 public class MemoryBookService implements BookService {
     private static Long currentId = 1L;
     private List<Book> list;
