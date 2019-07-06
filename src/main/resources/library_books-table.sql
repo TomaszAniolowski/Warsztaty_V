@@ -1,0 +1,5 @@
+INSERT INTO library.books (id, isbn, title, author, publisher, type) VALUES (1, '9780130273635', 'Thinking in Java (2nd Edition)', 'Bruce Eckel', 'Pearson Education', 'programming');
+INSERT INTO library.books (id, isbn, title, author, publisher, type) VALUES (2, '9781566199155', 'Les Misérables', 'Victor Hugo', 'Barnes & Noble Books', 'novel');
+INSERT INTO library.books (id, isbn, title, author, publisher, type) VALUES (3, '9780811200684', 'Siddhartha', 'Hermann Hesse', 'New Directions', 'novel');
+INSERT INTO library.books (id, isbn, title, author, publisher, type) VALUES (4, '9780141397641', 'Socrates'' Defence', 'Plato', 'PENGUIN GROUP', 'philosophy');
+INSERT INTO library.books (id, isbn, title, author, publisher, type) VALUES (5, '9780679720201', 'The Stranger', 'Albert Camus', 'Vintage', 'philosophical novel');
