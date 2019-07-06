@@ -1,0 +1,104 @@
+#navigate {
+    align-items: center;
+    height: 250px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+#navigate h1 {
+    font-size: 50px;
+}
+
+#data {
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+    text-align: center;
+    font-family: Cambria, Georgia, serif;
+}
+
+#data section {
+    position: relative;
+    width: 45%;
+    margin: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    float: left;
+    justify-content: space-between;
+
+}
+
+#navigate button {
+    background: #0086ff;
+    border: none;
+    margin: 5px;
+    border-radius: 4px;
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 40px;
+    width: 170px;
+    transition: .2s all linear;
+    outline: none;
+    cursor: pointer;
+}
+
+.edit,
+.delete,
+#form button {
+    background: #0086ff;
+    border: none;
+    margin: 10px;
+    border-radius: 4px;
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 17px;
+    line-height: 30px;
+    transition: .2s all linear;
+    outline: none;
+    cursor: pointer;
+}
+
+
+form {
+    margin-top: 25px;
+}
+
+input {
+    background: #ffffff;
+    margin: 5px;
+    padding: 8px;
+    width: 95%;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.start-invisible {
+    visibility: hidden;
+}
+
+#books {
+    margin-top: 50px;
+}
+
+.book-title {
+    cursor: pointer;
+}
+
+#buttons {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form br {
+    margin-bottom: 35px;
+}
+
+input {
+    text-align: center;
+}

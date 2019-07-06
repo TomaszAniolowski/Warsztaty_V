@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>CodersLab</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<section id="navigate">
+    <h1>BOOKS</h1>
+    <div id="buttons">
+
+        <button id="display">Show books</button>
+        <br>
+        <button id="add">Add book</button>
+    </div>
+</section>
+<section id="data">
+    <section id="display-books">
+        <div class="start-invisible" id="books">
+
+        </div>
+    </section>
+
+    <section id="form">
+        <form action="http://localhost:8080/books" method="post" class="start-invisible" id="addBook">
+            <label> Title:
+                <input type="text" name="title" class="title">
+            </label> <br>
+            <label> Author:
+                <input type="text" name="author" class="author">
+            </label> <br>
+            <label> Publisher:
+                <input type="text" name="publisher" class="publisher">
+            </label> <br>
+            <label> ISBN:
+                <input type="text" name="isbn" class="isbn">
+            </label> <br>
+            <label> Type:
+                <input type="text" name="type" class="type">
+            </label>
+            <button id="add-button">add book</button>
+            <button class="exit">exit</button>
+        </form>
+        <form action="http://localhost:8080/books" method="post" class="start-invisible" id="editBook">
+            <label> Title:
+                <input type="text" name="title" class="title">
+            </label> <br>
+            <label> Author:
+                <input type="text" name="author" class="author">
+            </label> <br>
+            <label> Publisher:
+                <input type="text" name="publisher" class="publisher">
+            </label> <br>
+            <label> ISBN:
+                <input type="text" name="isbn" class="isbn">
+            </label> <br>
+            <label> Type:
+                <input type="text" name="type" class="type">
+            </label>
+            <button id="edit-button">update book</button>
+            <button class="exit">exit</button>
+        </form>
+    </section>
+</section>
+
+<script src="js/JQuery.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
