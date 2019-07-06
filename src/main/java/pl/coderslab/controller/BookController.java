@@ -1,10 +1,10 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
 import pl.coderslab.model.BookService;
-import pl.coderslab.model.MemoryBookService;
 
 import java.util.List;
 
@@ -12,38 +12,36 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookController {
 
-    private BookService memoryBookService;
+    private BookService bookService;
 
     @Autowired
-    public BookController(MemoryBookService memoryBookService){
-        this.memoryBookService = memoryBookService;
+    public BookController(@Qualifier("dbBookService") BookService bookService){
+        this.bookService = bookService;
     }
 
     @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id){
-        return memoryBookService.getBook(id);
+        return bookService.getBook(id);
     }
 
     @GetMapping
     public List<Book> getBooks(){
-        List<Book> books = memoryBookService.getList();
-
-        return books;
+        return bookService.getList();
     }
 
     @PostMapping
     public Book addBook(@RequestBody Book book) {
-        return memoryBookService.addBook(book);
+        return bookService.addBook(book);
     }
 
     @PutMapping("/{id}")
     public void updateBook(@RequestBody Book book){
-        memoryBookService.updateBook(book);
+        bookService.updateBook(book);
     }
 
     @DeleteMapping("/{id}")
-    public void removeBook(Long id) {
-        memoryBookService.removeBook(memoryBookService.getBook(id));
+    public void removeBook(@PathVariable Long id) {
+        bookService.removeBook(bookService.getBook(id));
     }
 
 }
