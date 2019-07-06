@@ -1,6 +1,5 @@
-package pl.coderslab.controller;
+package pl.coderslab.model;
 
-import org.springframework.ui.Model;
 
 import java.util.List;
 

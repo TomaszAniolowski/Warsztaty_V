@@ -1,4 +1,4 @@
-package pl.coderslab.controller;
+package pl.coderslab.model;
 
 public interface Model {
 

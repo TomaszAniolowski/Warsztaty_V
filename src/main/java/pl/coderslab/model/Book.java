@@ -1,7 +1,5 @@
 package pl.coderslab.model;
 
-import pl.coderslab.controller.Model;
-
 public class Book implements Model {
     private Long id;
     private String isbn;
