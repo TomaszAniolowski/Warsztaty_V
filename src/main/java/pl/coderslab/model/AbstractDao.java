@@ -58,9 +58,9 @@ public abstract class AbstractDao implements DaoInterface {
         try (Connection conn = DBUtill.getConnection()) {
 
             if (item.getId() == null)
-                saveNewStatement(conn, item);
+                saveNewToDb(conn, item);
             else
-                updateExistingStatement(conn, item);
+                updateExistingInDb(conn, item);
 
         } catch (SQLException e) {
             e.printStackTrace();
