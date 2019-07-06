@@ -43,7 +43,7 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public void removeBook(Long id) {
-        memoryBookService.removeBook(id);
+        memoryBookService.removeBook(memoryBookService.getBook(id));
     }
 
 }

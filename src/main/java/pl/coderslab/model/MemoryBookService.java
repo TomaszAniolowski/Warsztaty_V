@@ -3,7 +3,6 @@ package pl.coderslab.model;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
@@ -31,19 +30,15 @@ public class MemoryBookService implements BookService {
         return list.stream().filter(b -> b.getId().equals(id)).findFirst().get();
     }
 
-    public void setList(List<Book> list) {
-        this.list = list;
-    }
-
     public Book addBook (Book book) {
         book.setId(currentId++);
         list.add(book);
         return book;
     }
 
-    public void removeBook (Long id) {
+    public void removeBook (Book book) {
         list = list.stream()
-                .filter(b -> b.getId().equals(id))
+                .filter(b -> b.getId().equals(book.getId()))
                 .collect(Collectors.toList());
     }
 
