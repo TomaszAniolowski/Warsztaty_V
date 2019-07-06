@@ -8,7 +8,8 @@ import java.sql.SQLException;
 public class BookDao extends AbstractDao {
 
     private static final String LOAD_ALL_QUERY = "SELECT * FROM books";
-    private static final String LOAD_ALL_BY_ID_QUERY = "SELECT * FROM books WHERE id=?";
+    private static final String LOAD_BY_ID_QUERY = "SELECT * FROM books WHERE id=?";
+    private static final String LOAD_BY_ISBN_QUERY = "SELECT * FROM books WHERE isbn=?";
     private static final String CREATE_QUERY = "INSERT INTO books(isbn, title, author, publisher, type) VALUES(?,?,?,?,?)";
     private static final String UPDATE_QUERY = "UPDATE books SET isbn=?, title=?, author=?, publisher=?, type=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM books WHERE id=?";
@@ -32,7 +33,7 @@ public class BookDao extends AbstractDao {
 
     @Override
     protected String getLoadAllByIdQuery() {
-        return LOAD_ALL_BY_ID_QUERY;
+        return LOAD_BY_ID_QUERY;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class BookDao extends AbstractDao {
         ps.setString(3, ((Book) book).getAuthor());
         ps.setString(4, ((Book) book).getPublisher());
         ps.setString(5, ((Book) book).getType());
-        ps.setLong(6, ((Book) book).getId());
+        ps.setLong(6, book.getId());
 
         return ps;
     }
@@ -68,5 +69,23 @@ public class BookDao extends AbstractDao {
         ps.setLong(1, book.getId());
 
         return ps;
+    }
+
+    public Book loadByIsbn(String isbn) {
+        try (Connection conn = DBUtill.getConnection();
+             PreparedStatement ps = conn.prepareStatement(LOAD_BY_ISBN_QUERY)) {
+
+            ps.setString(1, isbn);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+                return (Book) newFromResultSet(rs);
+
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
